@@ -4,40 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechInAdvance | AI Marketing Swarm</title>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <style>
         :root {
             --primary-blue: #0062ff;
-            --dark-blue: #001a4d;
+            --dark-bg: #0a0e17;
             --accent-mint: #00f2ea;
-            --glass: rgba(255, 255, 255, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         body { 
             font-family: 'Inter', 'Segoe UI', sans-serif; 
             margin: 0; 
-            background: #0a0e17; 
+            background: var(--dark-bg); 
             color: white; 
             line-height: 1.6; 
             overflow-x: hidden; 
         }
 
-        /* Animated Mesh Gradient Background */
+        /* Moving Mesh Gradient Background */
         .mesh-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 0% 0%, #001a4d 0%, transparent 50%),
-                        radial-gradient(circle at 100% 100%, #0062ff 0%, transparent 50%),
-                        radial-gradient(circle at 50% 50%, #0a0e17 0%, #000 100%);
+            background: radial-gradient(circle at 10% 10%, #001a4d 0%, transparent 40%),
+                        radial-gradient(circle at 90% 90%, #0062ff 0%, transparent 40%);
             z-index: -1;
-            opacity: 0.8;
+            opacity: 0.6;
+            filter: blur(80px);
         }
 
         /* -----------------------------------------
-           HEADER & TITLE ANIMATION
+           HERO SECTION
         ------------------------------------------ */
         header {
-            height: 60vh;
+            height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -48,120 +49,127 @@
 
         .title-container {
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         header h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: clamp(3rem, 10vw, 6rem);
             margin: 0;
-            letter-spacing: -2px;
-            background: linear-gradient(to right, #fff, var(--primary-blue));
+            letter-spacing: -3px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: revealText 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
             transform: translateY(100%);
+            animation: revealText 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
         }
 
         @keyframes revealText {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(0); }
+            to { transform: translateY(0); }
         }
 
         header p {
             font-size: 1.2rem;
             color: #8fa3ad;
-            max-width: 600px;
-            animation: fadeIn 2s ease forwards;
+            max-width: 650px;
             opacity: 0;
+            animation: fadeIn 2s ease 0.5s forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* -----------------------------------------
-           PORTAL CARD (Glassmorphism)
+           PORTAL SECTION (The "App" Entry)
         ------------------------------------------ */
-        .container { max-width: 1100px; margin: -100px auto 100px; padding: 0 20px; }
+        .container { max-width: 1100px; margin: -120px auto 100px; padding: 0 20px; }
 
         .portal-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            padding: 80px 40px;
+            border-radius: 40px;
+            padding: 100px 40px;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+            visibility: hidden; /* Handled by ScrollReveal */
         }
 
         .launch-btn {
             display: inline-block;
             background: #fff;
             color: #000;
-            padding: 20px 50px;
+            padding: 24px 64px;
             border-radius: 100px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
 
         .launch-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255,255,255,0.4);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 98, 255, 0.4);
+            background: var(--primary-blue);
+            color: white;
         }
 
         /* -----------------------------------------
-           BENTO GRID (Modern Dark Mode)
+           BENTO GRID (Animated Items)
         ------------------------------------------ */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 80px;
+            gap: 25px;
+            margin-top: 100px;
         }
 
         .bento-item {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 45px;
+            border-radius: 30px;
             transition: all 0.4s ease;
+            visibility: hidden; /* Handled by ScrollReveal */
         }
 
         .bento-item:hover {
             background: rgba(255, 255, 255, 0.05);
             border-color: var(--primary-blue);
             transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
         }
 
         .tag {
             color: var(--accent-mint);
-            font-size: 0.7rem;
-            font-weight: 800;
+            font-size: 0.75rem;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
             display: block;
         }
 
-        .bento-item h3 { font-size: 1.5rem; margin: 10px 0; }
-        .bento-item p { color: #8fa3ad; font-size: 0.95rem; }
+        .bento-item h3 { font-size: 1.6rem; margin: 15px 0; font-weight: 700; }
+        .bento-item p { color: #8fa3ad; font-size: 1rem; line-height: 1.7; }
 
         .wide { grid-column: span 2; }
-        .featured { border: 1px solid var(--primary-blue); background: rgba(0, 98, 255, 0.05); }
+        .featured { 
+            border: 1px solid var(--primary-blue); 
+            background: linear-gradient(135deg, rgba(0, 98, 255, 0.1), transparent);
+        }
 
         @media (max-width: 900px) {
             .bento-grid { grid-template-columns: 1fr; }
             .wide { grid-column: span 1; }
+            header { height: 60vh; }
+            .portal-card { padding: 60px 20px; }
         }
 
-        footer { text-align: center; padding: 100px 0 50px; color: #4b5563; font-size: 0.8rem; }
+        footer { text-align: center; padding: 120px 0 60px; color: #4b5563; font-size: 0.85rem; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -172,53 +180,81 @@
     <div class="title-container">
         <h1>TECH IN ADVANCE</h1>
     </div>
-    <p>Coordinate a high-performance swarm of AI agents to dominate your local market.</p>
+    <p>Coordinate a high-performance swarm of AI agents to dominate your local market through predictive intelligence.</p>
 </header>
 
 <div class="container">
     <div class="portal-card">
-        <div style="font-size: 3rem; margin-bottom: 20px;">⚡</div>
-        <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Swarm Intelligence Portal</h2>
-        <p style="color: #8fa3ad; margin-bottom: 40px;">Ready to deploy HVAC, Real Estate, and Retail agents.</p>
-        <a href="https://techinadvance.streamlit.app" target="_blank" class="launch-btn">LAUNCH COMMAND CENTER</a>
+        <div style="font-size: 4rem; margin-bottom: 25px;">⚡</div>
+        <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; font-weight: 800;">Swarm Control Center</h2>
+        <p style="color: #8fa3ad; margin-bottom: 50px; max-width: 500px; margin-left: auto; margin-right: auto;">
+            Secure gateway for HVAC, Real Estate, and Retail AI deployment.
+        </p>
+        <a href="https://techinadvance.streamlit.app" target="_blank" class="launch-btn">LAUNCH OPERATIONS</a>
     </div>
 
     <div class="bento-grid">
         <div class="bento-item">
-            <span class="tag">Home Services</span>
+            <span class="tag">Sector 01</span>
             <h3>HVAC Strategist</h3>
-            <p>Predictive maintenance marketing based on real-time climate telemetry.</p>
+            <p>Real-time climate telemetry paired with predictive service marketing.</p>
         </div>
 
         <div class="bento-item">
-            <span class="tag">Real Estate</span>
+            <span class="tag">Sector 02</span>
             <h3>Property Maven</h3>
-            <p>Hyper-local market research and high-converting listing automation.</p>
+            <p>Automated hyper-local market research and high-conversion listings.</p>
         </div>
 
         <div class="bento-item">
-            <span class="tag">Compliance</span>
+            <span class="tag">Security</span>
             <h3>The Humanizer</h3>
-            <p>Advanced natural language processing to remove AI-markers from your copy.</p>
+            <p>Deep-learning filters that remove algorithmic footprints from all copy.</p>
         </div>
 
         <div class="bento-item wide featured">
-            <span class="tag">Creative Engine</span>
+            <span class="tag">Master Creative</span>
             <h3>Visual Brand Guard 🎨</h3>
-            <p>Locked-in brand parameters ensuring every AI-generated asset adheres to your strict photography and color guidelines.</p>
+            <p>Strict Brand DNA enforcement. Our agents ensure every pixel of AI-generated creative is locked to your specific hex codes and editorial photography standards.</p>
         </div>
 
         <div class="bento-item">
-            <span class="tag">Analysis</span>
+            <span class="tag">Intelligence</span>
             <h3>The Analyst</h3>
-            <p>Competitor gap analysis for city-wide market penetration.</p>
+            <p>Competitor gap analysis for city-wide market penetration and growth.</p>
         </div>
     </div>
 </div>
 
 <footer>
-    &copy; 2026 TechInAdvance | Next-Gen AI Operations
+    &copy; 2026 TECH IN ADVANCE | NEXT-GEN OPERATIONS
 </footer>
+
+<script>
+    // Initialize ScrollReveal for the "Enter" animations
+    const sr = ScrollReveal({
+        distance: '60px',
+        duration: 1500,
+        delay: 200,
+        reset: false // Animations happen only once
+    });
+
+    // Animate the Portal Card
+    sr.reveal('.portal-card', {
+        origin: 'bottom',
+        scale: 0.9,
+        opacity: 0,
+        delay: 600
+    });
+
+    // Animate the Bento Grid items with a "Stagger" effect
+    sr.reveal('.bento-item', {
+        origin: 'bottom',
+        interval: 150, // Time between each item appearing
+        opacity: 0,
+        distance: '40px'
+    });
+</script>
 
 </body>
 </html>
