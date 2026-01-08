@@ -10,20 +10,70 @@
             --trust-bg: #f4f7f9;
             --text-dark: #333;
             --accent-mint: #00897b;
+            --glow: rgba(0, 86, 179, 0.3);
         }
 
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--trust-bg); color: var(--text-dark); line-height: 1.6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--trust-bg); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
         
-        header { background: var(--primary-blue); color: white; padding: 60px 20px; text-align: center; border-bottom: 5px solid #004494; }
-        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; }
-        header p { font-weight: 300; opacity: 0.9; margin-top: 10px; }
+        /* Dynamic Background Animation */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0) 0%, rgba(230,241,255,1) 100%);
+            z-index: -1;
+        }
 
-        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+        header { 
+            background: var(--primary-blue); 
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-bottom: 5px solid #004494;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Scanning Line */
+        header::after {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent);
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        header h1 { margin: 0; font-size: 3rem; letter-spacing: 4px; font-weight: 800; }
+        header p { font-weight: 300; opacity: 0.9; margin-top: 10px; font-size: 1.2rem; }
+
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; position: relative; }
         
-        /* App Section */
+        /* App Section with Glow Effect */
         .section-title { text-align: center; margin-bottom: 30px; }
-        .app-container { height: 850px; border: 1px solid #ddd; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.15); background: white; }
+        .app-container { 
+            height: 850px; 
+            border: 1px solid #ddd; 
+            border-radius: 16px; 
+            overflow: hidden; 
+            box-shadow: 0 0 30px var(--glow); 
+            background: white;
+            transition: box-shadow 0.5s ease;
+        }
+        .app-container:hover { box-shadow: 0 0 50px rgba(0, 86, 179, 0.5); }
+        
         iframe { width: 100%; height: 100%; border: none; }
+
+        /* External Link Button (Safety Valve for Auth issues) */
+        .auth-helper { text-align: center; margin-top: 15px; font-size: 0.85rem; color: #666; }
+        .auth-helper a { color: var(--primary-blue); text-decoration: none; font-weight: bold; }
 
         /* Bento Grid Features */
         .bento-grid {
@@ -35,19 +85,19 @@
         .bento-item {
             background: white;
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 24px;
             border: 1px solid #eef2f6;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
         .bento-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,86,179,0.1);
+            border-color: var(--primary-blue);
         }
         .bento-item h3 { color: var(--primary-blue); margin: 10px 0; font-size: 1.25rem; }
-        .bento-item p { color: #666; font-size: 0.9rem; margin-bottom: 15px; }
         
         .tag {
             display: inline-block;
@@ -60,19 +110,18 @@
             text-transform: uppercase;
         }
         
-        /* Layout Variations */
         .wide { grid-column: span 2; }
-        .featured { border-left: 5px solid var(--accent-mint); }
-        
-        .icon-box { font-size: 2rem; }
+        .featured { border: 2px solid var(--accent-mint); }
+        .icon-box { font-size: 2.5rem; margin-bottom: 10px; }
 
         @media (max-width: 900px) {
             .bento-grid { grid-template-columns: 1fr; }
             .wide { grid-column: span 1; }
-            .app-container { height: 600px; }
+            .app-container { height: 650px; }
+            header h1 { font-size: 2rem; }
         }
 
-        footer { text-align: center; padding: 40px; color: #888; font-size: 0.8rem; }
+        footer { text-align: center; padding: 60px 40px; color: #888; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -85,11 +134,15 @@
 <div class="container">
     <div class="section-title">
         <h2>Launch Your Swarm</h2>
-        <p>Access your dedicated team of AI agents below to begin your campaign research.</p>
+        <p>Log in to deploy your specialized AI agents.</p>
     </div>
     
     <div class="app-container">
-        <iframe src="https://techinadvance.streamlit.app/?embed=true"></iframe>
+        <iframe src="https://techinadvance.streamlit.app/?embedded=true" allow="clipboard-read; clipboard-write"></iframe>
+    </div>
+
+    <div class="auth-helper">
+        Trouble logging in? <a href="https://techinadvance.streamlit.app" target="_blank">Open Swarm in a new window &rarr;</a>
     </div>
 
     <div class="bento-grid">
@@ -98,7 +151,7 @@
                 <span class="tag">Home Services</span>
                 <div class="icon-box">🌬️</div>
                 <h3>HVAC Strategist</h3>
-                <p>Analyzes SEER ratings and weather patterns to trigger perfect-timing AC & Furnace leads.</p>
+                <p>Analyzes seasonal shifts and local climate data to trigger high-conversion leads.</p>
             </div>
         </div>
 
@@ -107,7 +160,7 @@
                 <span class="tag">Real Estate</span>
                 <div class="icon-box">🏡</div>
                 <h3>Property Maven</h3>
-                <p>Scrapes neighborhood comps to write emotive listings that sell the lifestyle, not just the house.</p>
+                <p>Automates neighborhood research to craft listings that resonate with local buyers.</p>
             </div>
         </div>
 
@@ -116,7 +169,7 @@
                 <span class="tag">Compliance</span>
                 <div class="icon-box">✍️</div>
                 <h3>The Humanizer</h3>
-                <p>Rewrites AI-output to sound like a local business owner. No generic buzzwords allowed.</p>
+                <p>Refines AI output to match your local brand voice, ensuring every ad feels authentic.</p>
             </div>
         </div>
 
@@ -125,7 +178,7 @@
                 <div style="flex: 2;">
                     <span class="tag" style="background: #e6fffa; color: #00897b;">Global Branding</span>
                     <h3>Visual Brand Guard</h3>
-                    <p>The guardian of your brand kit. Every AI-generated image prompt is strictly locked to your specific hex codes, lighting style, and photography guidelines to ensure 100% aesthetic consistency.</p>
+                    <p>Enforces strict brand kit parameters—hex codes, lighting, and composition—across all AI-generated creative assets.</p>
                 </div>
                 <div class="icon-box" style="font-size: 4rem; flex: 1; text-align: center;">🎨</div>
             </div>
@@ -136,14 +189,14 @@
                 <span class="tag">E-Commerce</span>
                 <div class="icon-box">🛍️</div>
                 <h3>The Merchandiser</h3>
-                <p>Uses predictive analysis to create FOMO-driven social sequences for retail drops.</p>
+                <p>Predicts retail trends to build automated social sequences for product launches.</p>
             </div>
         </div>
     </div>
 </div>
 
 <footer>
-    &copy; 2026 TechInAdvance. Powered by Gemini 2.5 Flash & CrewAI Swarm Technology.
+    &copy; 2026 TechInAdvance. | Built with Gemini 2.5 Flash & CrewAI Swarm.
 </footer>
 
 </body>
