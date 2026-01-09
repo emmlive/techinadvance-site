@@ -53,7 +53,7 @@
 
         .container { max-width: 1100px; margin: -120px auto 100px; padding: 0 20px; }
 
-        /* PORTAL CARD - Secure Gateway */
+        /* PORTAL CARD - 100% Iframe-Free Gateway */
         .portal-card {
             background: var(--glass); backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border);
@@ -100,7 +100,6 @@
         .wide { grid-column: span 2; }
         .featured { border: 1px solid var(--primary-blue); background: linear-gradient(135deg, rgba(0, 98, 255, 0.1), transparent); }
 
-        /* TECH STACK SECTION */
         .tech-section {
             margin-top: 150px; text-align: center; padding: 80px 20px;
             background: rgba(255, 255, 255, 0.01); border-radius: 40px;
@@ -151,11 +150,9 @@
 <div class="container">
     <div class="portal-card">
         <div style="font-size: 4rem; margin-bottom: 25px;">🛡️</div>
-        <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; font-weight: 800;">Secure Command Center</h2>
+        <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; font-weight: 800;">Command Center</h2>
         <p style="color: #8fa3ad; margin-bottom: 50px; max-width: 500px; margin-left: auto; margin-right: auto;">
-            Access your encrypted session for HVAC, Real Estate, and Retail AI deployment. 
-            <br><br>
-            <span style="color: #fff; font-size: 0.9rem;">Verified login required. Launching in a secure new tab.</span>
+            Access your encrypted session for HVAC, Real Estate, and Retail AI deployment. Your session will launch in a secure new window.
         </p>
         <a href="https://techinadvance.streamlit.app" target="_blank" class="launch-btn">LAUNCH OPERATIONS</a>
         <p style="font-size: 0.75rem; color: #4b5563; margin-top: 25px; letter-spacing: 2px;">
@@ -167,7 +164,7 @@
         <div class="bento-item"><span class="tag">Sector 01</span><h3>HVAC Strategist</h3><p>Predictive marketing automation synced with real-time seasonal data.</p></div>
         <div class="bento-item"><span class="tag">Sector 02</span><h3>Property Maven</h3><p>Hyper-local market research and automated emotive listing generation.</p></div>
         <div class="bento-item"><span class="tag">Security</span><h3>The Humanizer</h3><p>Advanced neural filters ensuring every word of output feels 100% human.</p></div>
-        <div class="bento-item wide featured"><span class="tag">Master Creative</span><h3>Visual Brand Guard 🎨</h3><p>Locked Brand DNA. Our agents ensure every pixel of AI-generated creative adheres to your specific hex codes and editorial photography standards.</p></div>
+        <div class="bento-item wide featured"><span class="tag">Master Creative</span><h3>Visual Brand Guard 🎨</h3><p>Locked Brand DNA. Our agents ensure every pixel of AI-generated creative adheres to your specific hex codes.</p></div>
         <div class="bento-item"><span class="tag">Intelligence</span><h3>The Analyst</h3><p>Competitor gap analysis for deep city-wide market penetration.</p></div>
     </div>
 
@@ -201,7 +198,13 @@
 </footer>
 
 <script>
-    const sr = ScrollReveal({ distance: '60px', duration: 1500, delay: 200, reset: false });
+    const sr = ScrollReveal({
+        distance: '60px',
+        duration: 1500,
+        delay: 200,
+        reset: false
+    });
+
     sr.reveal('.portal-card', { origin: 'bottom', scale: 0.9 });
     sr.reveal('.bento-item', { origin: 'bottom', interval: 150 });
     sr.reveal('.tech-section', { origin: 'bottom', opacity: 0 });
