@@ -16,90 +16,55 @@
 
         body { 
             font-family: 'Inter', 'Segoe UI', sans-serif; 
-            margin: 0; 
-            background: var(--dark-bg); 
-            color: white; 
-            line-height: 1.6; 
-            overflow-x: hidden; 
+            margin: 0; background: var(--dark-bg); color: white; 
+            line-height: 1.6; overflow-x: hidden; 
         }
 
-        /* Moving Mesh Gradient Background */
         .mesh-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 10% 10%, #001a4d 0%, transparent 40%),
                         radial-gradient(circle at 90% 90%, #0062ff 0%, transparent 40%);
-            z-index: -1;
-            opacity: 0.6;
-            filter: blur(80px);
+            z-index: -1; opacity: 0.6; filter: blur(80px);
         }
 
         header {
-            height: 75vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
+            height: 75vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center; padding: 0 20px;
         }
 
-        .title-container {
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
+        .title-container { overflow: hidden; margin-bottom: 15px; }
 
         header h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            margin: 0;
-            letter-spacing: -3px;
+            font-size: clamp(3rem, 10vw, 6rem); margin: 0; letter-spacing: -3px;
             background: linear-gradient(135deg, #ffffff 30%, var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: translateY(100%);
-            animation: revealText 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transform: translateY(100%); animation: revealText 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
         }
 
-        @keyframes revealText {
-            to { transform: translateY(0); }
-        }
+        @keyframes revealText { to { transform: translateY(0); } }
 
         header p {
-            font-size: 1.2rem;
-            color: #8fa3ad;
-            max-width: 650px;
-            opacity: 0;
-            animation: fadeIn 2s ease 0.5s forwards;
+            font-size: 1.2rem; color: #8fa3ad; max-width: 650px;
+            opacity: 0; animation: fadeIn 2s ease 0.5s forwards;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
 
         .container { max-width: 1100px; margin: -120px auto 100px; padding: 0 20px; }
 
+        /* PORTAL CARD - Error Free Version */
         .portal-card {
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            padding: 100px 40px;
-            text-align: center;
+            background: var(--glass); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border);
+            border-radius: 40px; padding: 100px 40px; text-align: center;
             box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
             visibility: hidden;
         }
 
         .launch-btn {
-            display: inline-block;
-            background: #fff;
-            color: #000;
-            padding: 24px 64px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
+            display: inline-block; background: #fff; color: #000;
+            padding: 24px 64px; border-radius: 100px; text-decoration: none;
+            font-weight: 800; font-size: 1.3rem; letter-spacing: 1px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
@@ -107,95 +72,51 @@
         .launch-btn:hover {
             transform: scale(1.05) translateY(-5px);
             box-shadow: 0 20px 50px rgba(0, 98, 255, 0.4);
-            background: var(--primary-blue);
-            color: white;
+            background: var(--primary-blue); color: white;
         }
 
         .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 100px;
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 25px; margin-top: 100px;
         }
 
         .bento-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--glass-border);
-            padding: 45px;
-            border-radius: 30px;
-            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border);
+            padding: 45px; border-radius: 30px; transition: all 0.4s ease;
             visibility: hidden;
         }
 
         .bento-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--primary-blue);
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.05); border-color: var(--primary-blue);
+            transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.3);
         }
 
-        .tag {
-            color: var(--accent-mint);
-            font-size: 0.75rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            display: block;
-        }
+        .tag { color: var(--accent-mint); font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: block; }
 
         .bento-item h3 { font-size: 1.6rem; margin: 15px 0; font-weight: 700; }
         .bento-item p { color: #8fa3ad; font-size: 1rem; line-height: 1.7; }
 
         .wide { grid-column: span 2; }
-        .featured { 
-            border: 1px solid var(--primary-blue); 
-            background: linear-gradient(135deg, rgba(0, 98, 255, 0.1), transparent);
-        }
+        .featured { border: 1px solid var(--primary-blue); background: linear-gradient(135deg, rgba(0, 98, 255, 0.1), transparent); }
 
+        /* TECH STACK SECTION */
         .tech-section {
-            margin-top: 150px;
-            text-align: center;
-            padding: 80px 20px;
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 40px;
-            border: 1px solid var(--glass-border);
-            visibility: hidden;
+            margin-top: 150px; text-align: center; padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.01); border-radius: 40px;
+            border: 1px solid var(--glass-border); visibility: hidden;
         }
 
-        .badge-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .badge {
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #8fa3ad;
-            text-transform: uppercase;
-        }
+        .badge-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+        .badge { padding: 10px 20px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; font-size: 0.8rem; font-weight: 600; color: #8fa3ad; text-transform: uppercase; }
 
         footer {
-            margin-top: 150px;
-            background: rgba(0,0,0,0.4);
-            padding: 80px 20px;
+            margin-top: 150px; background: rgba(0,0,0,0.4); padding: 80px 20px;
             border-top: 1px solid var(--glass-border);
         }
 
         .footer-grid {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
-            text-align: left;
+            max-width: 1100px; margin: auto; display: grid;
+            grid-template-columns: 2fr 1fr 1fr; gap: 50px; text-align: left;
         }
 
         .footer-col h4 { font-size: 1rem; margin-bottom: 25px; color: white; }
@@ -203,15 +124,9 @@
         .footer-link:hover { color: var(--primary-blue); }
 
         .support-btn {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 15px;
-            transition: 0.3s;
+            display: inline-block; background: var(--primary-blue); color: white;
+            padding: 12px 25px; border-radius: 12px; text-decoration: none;
+            font-weight: 700; margin-top: 15px; transition: 0.3s;
         }
 
         @media (max-width: 900px) {
@@ -229,56 +144,35 @@
     <div class="title-container">
         <h1>TECH IN ADVANCE</h1>
     </div>
-    <p>Scale your local market dominance through high-performance swarm intelligence and brand-locked AI operations.</p>
+    <p>Scale your local market dominance through high-performance swarm intelligence.</p>
 </header>
 
 <div class="container">
     <div class="portal-card">
         <div style="font-size: 4rem; margin-bottom: 25px;">🛡️</div>
-        <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; font-weight: 800;">Command Center</h2>
+        <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; font-weight: 800;">Secure Command Center</h2>
         <p style="color: #8fa3ad; margin-bottom: 50px; max-width: 500px; margin-left: auto; margin-right: auto;">
-            Secure session gateway for HVAC, Real Estate, and Retail AI deployment. Your session will launch in a secure new window.
+            Access your encrypted session for HVAC, Real Estate, and Retail AI deployment.
         </p>
         <a href="https://techinadvance.streamlit.app" target="_blank" class="launch-btn">LAUNCH OPERATIONS</a>
+        <p style="font-size: 0.75rem; color: #4b5563; margin-top: 25px; letter-spacing: 2px;">
+             VERIFIED SECURE CONNECTION • SSL ACTIVE
+        </p>
     </div>
 
     <div class="bento-grid">
-        <div class="bento-item">
-            <span class="tag">Sector 01</span>
-            <h3>HVAC Strategist</h3>
-            <p>Predictive marketing automation synced with real-time seasonal data.</p>
-        </div>
-        <div class="bento-item">
-            <span class="tag">Sector 02</span>
-            <h3>Property Maven</h3>
-            <p>Hyper-local market research and automated emotive listing generation.</p>
-        </div>
-        <div class="bento-item">
-            <span class="tag">Security</span>
-            <h3>The Humanizer</h3>
-            <p>Advanced neural filters ensuring every word of output feels 100% human.</p>
-        </div>
-        <div class="bento-item wide featured">
-            <span class="tag">Master Creative</span>
-            <h3>Visual Brand Guard 🎨</h3>
-            <p>Locked Brand DNA. Our agents ensure every pixel of AI-generated creative adheres to your specific hex codes and editorial photography standards.</p>
-        </div>
-        <div class="bento-item">
-            <span class="tag">Intelligence</span>
-            <h3>The Analyst</h3>
-            <p>Competitor gap analysis for deep city-wide market penetration.</p>
-        </div>
+        <div class="bento-item"><span class="tag">Sector 01</span><h3>HVAC Strategist</h3><p>Predictive marketing automation synced with real-time seasonal data.</p></div>
+        <div class="bento-item"><span class="tag">Sector 02</span><h3>Property Maven</h3><p>Hyper-local market research and automated emotive listing generation.</p></div>
+        <div class="bento-item"><span class="tag">Security</span><h3>The Humanizer</h3><p>Advanced neural filters ensuring every word of output feels 100% human.</p></div>
+        <div class="bento-item wide featured"><span class="tag">Master Creative</span><h3>Visual Brand Guard 🎨</h3><p>Locked Brand DNA. Our agents ensure every pixel of AI-generated creative adheres to your specific hex codes and editorial photography standards.</p></div>
+        <div class="bento-item"><span class="tag">Intelligence</span><h3>The Analyst</h3><p>Competitor gap analysis for deep city-wide market penetration.</p></div>
     </div>
 
     <div class="tech-section">
         <span class="tag">The Engine</span>
         <h2 style="font-size: 2.2rem; margin-top: 10px;">Built on Next-Gen Sovereign AI</h2>
-        <p style="color: #8fa3ad; max-width: 600px; margin: auto;">TechInAdvance utilizes a multi-agent swarm architecture to solve complex marketing problems in parallel.</p>
         <div class="badge-grid">
-            <div class="badge">Gemini 2.5 Flash</div>
-            <div class="badge">CrewAI Multi-Agent</div>
-            <div class="badge">Streamlit Cloud</div>
-            <div class="badge">Python 3.13</div>
+            <div class="badge">Gemini 2.5 Flash</div><div class="badge">CrewAI Swarm</div><div class="badge">Streamlit Cloud</div><div class="badge">Python 3.13</div>
         </div>
     </div>
 </div>
@@ -301,19 +195,10 @@
             <a href="mailto:support@techinadvance.com" class="support-btn">Contact Support</a>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 80px; color: #334155; font-size: 0.8rem;">
-        &copy; 2026 TECH IN ADVANCE | ALL RIGHTS RESERVED
-    </div>
 </footer>
 
 <script>
-    const sr = ScrollReveal({
-        distance: '60px',
-        duration: 1500,
-        delay: 200,
-        reset: false
-    });
-
+    const sr = ScrollReveal({ distance: '60px', duration: 1500, delay: 200, reset: false });
     sr.reveal('.portal-card', { origin: 'bottom', scale: 0.9 });
     sr.reveal('.bento-item', { origin: 'bottom', interval: 150 });
     sr.reveal('.tech-section', { origin: 'bottom', opacity: 0 });
