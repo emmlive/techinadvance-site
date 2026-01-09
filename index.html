@@ -80,7 +80,7 @@
         }
 
         /* -----------------------------------------
-           PORTAL SECTION (The "App" Entry)
+           PORTAL SECTION
         ------------------------------------------ */
         .container { max-width: 1100px; margin: -120px auto 100px; padding: 0 20px; }
 
@@ -93,7 +93,7 @@
             padding: 100px 40px;
             text-align: center;
             box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
-            visibility: hidden; /* Handled by ScrollReveal */
+            visibility: hidden;
         }
 
         .launch-btn {
@@ -118,7 +118,7 @@
         }
 
         /* -----------------------------------------
-           BENTO GRID (Animated Items)
+           BENTO GRID
         ------------------------------------------ */
         .bento-grid {
             display: grid;
@@ -133,7 +133,7 @@
             padding: 45px;
             border-radius: 30px;
             transition: all 0.4s ease;
-            visibility: hidden; /* Handled by ScrollReveal */
+            visibility: hidden;
         }
 
         .bento-item:hover {
@@ -162,14 +162,75 @@
             background: linear-gradient(135deg, rgba(0, 98, 255, 0.1), transparent);
         }
 
-        @media (max-width: 900px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .wide { grid-column: span 1; }
-            header { height: 60vh; }
-            .portal-card { padding: 60px 20px; }
+        /* -----------------------------------------
+           ABOUT TECH & FOOTER
+        ------------------------------------------ */
+        .tech-section {
+            margin-top: 150px;
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            visibility: hidden;
         }
 
-        footer { text-align: center; padding: 120px 0 60px; color: #4b5563; font-size: 0.85rem; letter-spacing: 1px; }
+        .badge-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .badge {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #8fa3ad;
+            text-transform: uppercase;
+        }
+
+        footer {
+            margin-top: 150px;
+            background: rgba(0,0,0,0.4);
+            padding: 80px 20px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            text-align: left;
+        }
+
+        .footer-col h4 { font-size: 1rem; margin-bottom: 25px; color: white; }
+        .footer-link { display: block; color: #8fa3ad; text-decoration: none; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
+        .footer-link:hover { color: var(--primary-blue); }
+
+        .support-btn {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .wide { grid-column: span 1; }
+        }
     </style>
 </head>
 <body>
@@ -180,15 +241,15 @@
     <div class="title-container">
         <h1>TECH IN ADVANCE</h1>
     </div>
-    <p>Coordinate a high-performance swarm of AI agents to dominate your local market through predictive intelligence.</p>
+    <p>Scale your local market dominance through high-performance swarm intelligence and brand-locked AI operations.</p>
 </header>
 
 <div class="container">
     <div class="portal-card">
         <div style="font-size: 4rem; margin-bottom: 25px;">⚡</div>
-        <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; font-weight: 800;">Swarm Control Center</h2>
+        <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; font-weight: 800;">Command Center</h2>
         <p style="color: #8fa3ad; margin-bottom: 50px; max-width: 500px; margin-left: auto; margin-right: auto;">
-            Secure gateway for HVAC, Real Estate, and Retail AI deployment.
+            Secure session gateway for HVAC, Real Estate, and Retail AI deployment.
         </p>
         <a href="https://techinadvance.streamlit.app" target="_blank" class="launch-btn">LAUNCH OPERATIONS</a>
     </div>
@@ -197,63 +258,77 @@
         <div class="bento-item">
             <span class="tag">Sector 01</span>
             <h3>HVAC Strategist</h3>
-            <p>Real-time climate telemetry paired with predictive service marketing.</p>
+            <p>Predictive marketing automation synced with real-time seasonal data.</p>
         </div>
-
         <div class="bento-item">
             <span class="tag">Sector 02</span>
             <h3>Property Maven</h3>
-            <p>Automated hyper-local market research and high-conversion listings.</p>
+            <p>Hyper-local market research and automated emotive listing generation.</p>
         </div>
-
         <div class="bento-item">
             <span class="tag">Security</span>
             <h3>The Humanizer</h3>
-            <p>Deep-learning filters that remove algorithmic footprints from all copy.</p>
+            <p>Advanced neural filters ensuring every word of output feels 100% human.</p>
         </div>
-
         <div class="bento-item wide featured">
             <span class="tag">Master Creative</span>
             <h3>Visual Brand Guard 🎨</h3>
-            <p>Strict Brand DNA enforcement. Our agents ensure every pixel of AI-generated creative is locked to your specific hex codes and editorial photography standards.</p>
+            <p>Locked Brand DNA. Our agents ensure every pixel of AI-generated creative adheres to your specific hex codes and editorial photography standards.</p>
         </div>
-
         <div class="bento-item">
             <span class="tag">Intelligence</span>
             <h3>The Analyst</h3>
-            <p>Competitor gap analysis for city-wide market penetration and growth.</p>
+            <p>Competitor gap analysis for deep city-wide market penetration.</p>
+        </div>
+    </div>
+
+    <div class="tech-section">
+        <span class="tag">The Engine</span>
+        <h2 style="font-size: 2.2rem; margin-top: 10px;">Built on Next-Gen Sovereign AI</h2>
+        <p style="color: #8fa3ad; max-width: 600px; margin: auto;">TechInAdvance utilizes a multi-agent swarm architecture to solve complex marketing problems in parallel.</p>
+        <div class="badge-grid">
+            <div class="badge">Gemini 2.5 Flash</div>
+            <div class="badge">CrewAI Multi-Agent</div>
+            <div class="badge">Streamlit Cloud</div>
+            <div class="badge">Python 3.13</div>
         </div>
     </div>
 </div>
 
 <footer>
-    &copy; 2026 TECH IN ADVANCE | NEXT-GEN OPERATIONS
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h3 style="color: white; margin-bottom: 15px; letter-spacing: 2px;">TECH IN ADVANCE</h3>
+            <p style="color: #4b5563; font-size: 0.9rem;">Automating market dominance through specialized swarm intelligence.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="#" class="footer-link">Operations Portal</a>
+            <a href="#" class="footer-link">Brand Kit Library</a>
+            <a href="#" class="footer-link">Privacy & Security</a>
+        </div>
+        <div class="footer-col">
+            <h4>Support</h4>
+            <p style="color: #8fa3ad; font-size: 0.85rem;">Need help with your swarm?</p>
+            <a href="mailto:support@techinadvance.com" class="support-btn">Contact Support</a>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 80px; color: #334155; font-size: 0.8rem;">
+        &copy; 2026 TECH IN ADVANCE | ALL RIGHTS RESERVED
+    </div>
 </footer>
 
 <script>
-    // Initialize ScrollReveal for the "Enter" animations
     const sr = ScrollReveal({
         distance: '60px',
         duration: 1500,
         delay: 200,
-        reset: false // Animations happen only once
+        reset: false
     });
 
-    // Animate the Portal Card
-    sr.reveal('.portal-card', {
-        origin: 'bottom',
-        scale: 0.9,
-        opacity: 0,
-        delay: 600
-    });
-
-    // Animate the Bento Grid items with a "Stagger" effect
-    sr.reveal('.bento-item', {
-        origin: 'bottom',
-        interval: 150, // Time between each item appearing
-        opacity: 0,
-        distance: '40px'
-    });
+    sr.reveal('.portal-card', { origin: 'bottom', scale: 0.9 });
+    sr.reveal('.bento-item', { origin: 'bottom', interval: 150 });
+    sr.reveal('.tech-section', { origin: 'bottom', opacity: 0 });
 </script>
 
 </body>
