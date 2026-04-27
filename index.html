@@ -87,6 +87,8 @@ header h1 {
     font-weight: 700;
     text-decoration: none;
     transition: 0.3s;
+    border: none;
+    cursor: pointer;
 }
 
 .launch-btn:hover {
@@ -117,6 +119,45 @@ header h1 {
     text-transform: uppercase;
 }
 
+/* MODAL */
+.modal-overlay {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.modal-content {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    padding:40px;
+    border-radius:24px;
+    max-width:500px;
+    width:90%;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    background: rgba(255,255,255,0.05);
+    border:1px solid var(--glass-border);
+    border-radius:10px;
+    color:white;
+}
+
+.close-modal {
+    margin-top:15px;
+    cursor:pointer;
+    color:#8fa3ad;
+    text-decoration:underline;
+}
+
 /* FOOTER */
 footer {
     padding: 80px 20px;
@@ -145,55 +186,95 @@ footer {
 
 <div class="container">
 
+    <!-- 🔥 HIGH-CONVERTING CTA -->
     <div class="portal-card">
-        <h2>Build Smarter. Launch Faster.</h2>
-        <p style="color:#8fa3ad; margin-bottom:30px;">
-            From idea to production — we create scalable software products like SaaS platforms, mobile apps, and custom systems.
+        <h2>Build Your Product — Without Guesswork</h2>
+
+        <p style="color:#8fa3ad; margin-bottom:20px;">
+            From idea to production — we create scalable web and mobile applications tailored to your business.
         </p>
 
-        <a href="https://soc2assistant.com" target="_blank" class="launch-btn">
-            View Our Work
-        </a>
+        <p style="margin-bottom:30px; font-weight:600;">
+            📞 Speak directly: <span style="color:#00f2ea;">(240) 601-3875</span>
+        </p>
+
+        <button onclick="toggleModal()" class="launch-btn">
+            Start Your Project →
+        </button>
+
+        <p style="margin-top:15px; font-size:0.85rem; color:#8fa3ad;">
+            Free consultation • No commitment
+        </p>
     </div>
 
+    <!-- SERVICES -->
     <div class="bento-grid">
         <div class="bento-item">
             <span class="tag">Web Apps</span>
             <h3>Custom SaaS Platforms</h3>
-            <p>We build scalable web applications like SOC2Assistant, tailored to your business needs.</p>
+            <p>We build scalable applications like SOC2Assistant.</p>
         </div>
 
         <div class="bento-item">
             <span class="tag">Mobile</span>
             <h3>iOS & Android Apps</h3>
-            <p>High-performance mobile apps designed for speed, usability, and growth.</p>
+            <p>Fast, modern mobile applications built for growth.</p>
         </div>
 
         <div class="bento-item">
             <span class="tag">AI Systems</span>
             <h3>AI-Powered Solutions</h3>
-            <p>Integrate AI into your product — automation, insights, and intelligent workflows.</p>
+            <p>Automation, insights, and intelligent workflows.</p>
         </div>
 
         <div class="bento-item">
             <span class="tag">Backend</span>
             <h3>Scalable Infrastructure</h3>
-            <p>Robust backend systems with APIs, databases, and cloud architecture.</p>
+            <p>APIs, databases, and cloud systems.</p>
         </div>
 
         <div class="bento-item">
             <span class="tag">UX/UI</span>
             <h3>Product Design</h3>
-            <p>Modern, intuitive interfaces that convert users and improve engagement.</p>
+            <p>Modern, conversion-focused interfaces.</p>
         </div>
 
         <div class="bento-item">
             <span class="tag">Consulting</span>
             <h3>Technical Strategy</h3>
-            <p>From MVP to scale — we guide your product roadmap and execution.</p>
+            <p>From MVP to scale — we guide your roadmap.</p>
         </div>
     </div>
 
+</div>
+
+<!-- 🔥 LEAD CAPTURE MODAL -->
+<div class="modal-overlay" id="contactModal">
+    <div class="modal-content">
+
+        <h2>Start Your Project</h2>
+
+        <p style="color:#8fa3ad;">
+            Tell us what you're building — we’ll help you execute it.
+        </p>
+
+        <form id="lead-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Business Email" required>
+            <input type="text" placeholder="What are you building?">
+            <textarea rows="4" placeholder="Project details, timeline, or goals"></textarea>
+
+            <button type="submit" class="launch-btn" style="width:100%;">
+                Get Free Consultation
+            </button>
+        </form>
+
+        <p style="margin-top:10px; font-size:0.8rem; color:#8fa3ad;">
+            We respond within 24 hours
+        </p>
+
+        <div class="close-modal" onclick="toggleModal()">Cancel</div>
+    </div>
 </div>
 
 <footer>
@@ -204,6 +285,18 @@ footer {
 <script>
 ScrollReveal().reveal('.portal-card', { delay: 300, duration: 1200 });
 ScrollReveal().reveal('.bento-item', { interval: 150, origin: 'bottom', distance: '40px' });
+
+function toggleModal() {
+    const modal = document.getElementById("contactModal");
+    modal.style.display = modal.style.display === "flex" ? "none" : "flex";
+}
+
+document.getElementById("lead-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("✅ Request received. We'll contact you shortly.");
+    this.reset();
+    toggleModal();
+});
 </script>
 
 </body>
