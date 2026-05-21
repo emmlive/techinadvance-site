@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Custom Web App Development | TechInAdvance</title>
+
+<meta name="description" content="TechInAdvance builds custom web applications, SaaS platforms, dashboards, portals, backend systems, and business software for startups and growing companies.">
+<meta name="keywords" content="custom web app development, SaaS development, business software, web application developer, startup web app, TechInAdvance">
+<meta name="author" content="TechInAdvance">
+
+<meta property="og:title" content="Custom Web App Development | TechInAdvance">
+<meta property="og:description" content="Premium custom web app development for startups, founders, and growing businesses.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://techinadvance.com/web-app-development.html">
+
+<link rel="canonical" href="https://techinadvance.com/web-app-development.html">
+
+<style>
+:root {
+    --bg: #050816;
+    --card: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.12);
+    --text: #ffffff;
+    --muted: #a7b4c8;
+    --cyan: #00f2ea;
+    --blue: #0062ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(0,98,255,0.45), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(0,242,234,0.2), transparent 28%),
+        #050816;
+    color: var(--text);
+}
+
+a {
+    color: inherit;
+}
+
+.nav {
+    max-width: 1180px;
+    margin: 24px auto 0;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(5,8,22,0.75);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.cta {
+    background: white;
+    color: #050816 !important;
+    padding: 12px 18px;
+    border-radius: 999px;
+}
+
+.hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 110px 20px 70px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 44px;
+    align-items: center;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.08em;
+    margin: 0 0 24px;
+}
+
+.gradient {
+    background: linear-gradient(135deg, #fff, #00f2ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.lead {
+    color: var(--muted);
+    font-size: 1.15rem;
+    line-height: 1.75;
+    max-width: 660px;
+}
+
+.btn-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+    text-decoration: none;
+    padding: 15px 22px;
+    border-radius: 999px;
+    font-weight: 850;
+    border: 1px solid var(--border);
+}
+
+.btn-primary {
+    background: white;
+    color: #050816;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.06);
+    color: white;
+}
+
+.panel {
+    border: 1px solid var(--border);
+    border-radius: 34px;
+    padding: 30px;
+    background: rgba(255,255,255,0.06);
+    box-shadow: 0 40px 110px rgba(0,0,0,0.45);
+}
+
+.panel h2 {
+    margin-top: 0;
+    letter-spacing: -0.04em;
+}
+
+.checklist {
+    display: grid;
+    gap: 14px;
+}
+
+.check {
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(5,8,22,0.62);
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.check strong {
+    color: white;
+}
+
+.section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 70px 20px;
+}
+
+.section h2 {
+    font-size: clamp(2rem, 4vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.06em;
+    margin: 0 0 18px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.card {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.055);
+    border-radius: 26px;
+    padding: 26px;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+.cta-section {
+    max-width: 1180px;
+    margin: 70px auto;
+    padding: 48px;
+    border-radius: 36px;
+    border: 1px solid rgba(0,242,234,0.25);
+    background: linear-gradient(135deg, rgba(0,98,255,0.3), rgba(0,242,234,0.1));
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 42px 20px;
+    color: var(--muted);
+}
+
+.footer-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.footer-inner a {
+    color: var(--cyan);
+    text-decoration: none;
+}
+
+@media (max-width: 850px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links a:not(.cta) {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+    <a class="logo" href="/">TechInAdvance</a>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/#process">Process</a>
+        <a href="mailto:techinadvanceinfo@gmail.com" class="cta">Start Project</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div>
+        <div class="eyebrow">Custom Web App Development</div>
+
+        <h1>
+            Build a web app that feels premium,
+            <span class="gradient">fast, and scalable.</span>
+        </h1>
+
+        <p class="lead">
+            TechInAdvance builds custom web applications for startups, founders, and growing businesses that need more than a basic website. We create dashboards, portals, SaaS platforms, admin systems, customer tools, and backend-powered software.
+        </p>
+
+        <div class="btn-row">
+            <a class="btn btn-primary" href="mailto:techinadvanceinfo@gmail.com?subject=Custom Web App Development Request">Start Your Web App</a>
+            <a class="btn btn-secondary" href="https://wa.me/12406013875" target="_blank" rel="noopener">WhatsApp Quick Chat</a>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>What we can build</h2>
+
+        <div class="checklist">
+            <div class="check"><strong>SaaS dashboards</strong><br>Admin panels, subscription tools, usage tracking, and user portals.</div>
+            <div class="check"><strong>Business portals</strong><br>Customer accounts, booking flows, forms, requests, and workflows.</div>
+            <div class="check"><strong>Backend systems</strong><br>APIs, authentication, databases, payments, and automation.</div>
+            <div class="check"><strong>AI-enabled tools</strong><br>Smart workflows, data processing, content systems, and assistants.</div>
+        </div>
+    </div>
+</header>
+
+<section class="section">
+    <h2>When your business needs more than a website.</h2>
+
+    <p class="lead">
+        A website tells people what you do. A web app helps people take action. It can collect leads, manage customers, automate tasks, process payments, show dashboards, and power your business operations.
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>For Startups</h3>
+            <p>Launch your MVP with the right structure from day one: user accounts, dashboards, payments, data models, and scalable workflows.</p>
+        </div>
+
+        <div class="card">
+            <h3>For Small Businesses</h3>
+            <p>Turn manual work into digital workflows with forms, booking systems, customer portals, invoices, and automated follow-up.</p>
+        </div>
+
+        <div class="card">
+            <h3>For Growing Teams</h3>
+            <p>Replace spreadsheets and scattered tools with a custom internal system designed around your actual process.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Our web app development process.</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>1. Discovery</h3>
+            <p>We learn your business goals, users, workflow, timeline, and what the application needs to accomplish.</p>
+        </div>
+
+        <div class="card">
+            <h3>2. Product Planning</h3>
+            <p>We define the screens, features, data, user flows, integrations, and launch roadmap.</p>
+        </div>
+
+        <div class="card">
+            <h3>3. Design & Build</h3>
+            <p>We build a clean interface, connect the backend, test the flows, and prepare the product for launch.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="eyebrow">Ready to build?</div>
+    <h2>Start your custom web app project with TechInAdvance.</h2>
+
+    <p class="lead">
+        Tell us what you want to build. We’ll help you plan the fastest path from idea to working product.
+    </p>
+
+    <div class="btn-row">
+        <a class="btn btn-primary" href="mailto:techinadvanceinfo@gmail.com?subject=New Web App Project Request">Email TechInAdvance</a>
+        <a class="btn btn-secondary" href="https://wa.me/12406013875" target="_blank" rel="noopener">Message on WhatsApp</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div>
+            <strong style="color:white;">TechInAdvance</strong><br>
+            Premium Web, Mobile & AI Software Development
+        </div>
+
+        <div>
+            <a href="tel:+12406013875">(240) 601-3875</a> ·
+            <a href="mailto:techinadvanceinfo@gmail.com">techinadvanceinfo@gmail.com</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
