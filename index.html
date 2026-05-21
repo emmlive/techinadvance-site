@@ -97,6 +97,32 @@ header h1 {
     transform: scale(1.05);
 }
 
+.quick-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 25px 0 10px;
+}
+
+.quick-link {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.quick-link:hover {
+    background: rgba(0,242,234,0.12);
+    border-color: var(--accent-mint);
+    transform: translateY(-2px);
+}
+
 /* SERVICES GRID */
 .bento-grid {
     display: grid;
@@ -149,6 +175,12 @@ header h1 {
     border:1px solid var(--glass-border);
     border-radius:10px;
     color:white;
+    box-sizing: border-box;
+}
+
+.modal-content input::placeholder,
+.modal-content textarea::placeholder {
+    color: #8fa3ad;
 }
 
 .close-modal {
@@ -163,12 +195,37 @@ footer {
     padding: 80px 20px;
     border-top: 1px solid var(--glass-border);
     text-align: center;
-    color: #4b5563;
+    color: #8fa3ad;
 }
 
-.phone {
-    color: var(--primary-blue);
+.phone,
+.email {
+    color: var(--accent-mint);
     font-weight: bold;
+}
+
+footer a {
+    color: var(--accent-mint);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-card {
+        padding: 55px 24px;
+    }
+
+    header {
+        height: 62vh;
+        padding: 0 20px;
+    }
 }
 </style>
 </head>
@@ -186,7 +243,7 @@ footer {
 
 <div class="container">
 
-    <!-- 🔥 HIGH-CONVERTING CTA -->
+    <!-- HIGH-CONVERTING CTA -->
     <div class="portal-card">
         <h2>Build Your Product — Without Guesswork</h2>
 
@@ -194,9 +251,26 @@ footer {
             From idea to production — we create scalable web and mobile applications tailored to your business.
         </p>
 
-        <p style="margin-bottom:30px; font-weight:600;">
+        <p style="margin-bottom:10px; font-weight:600;">
             📞 Speak directly: <span style="color:#00f2ea;">(240) 601-3875</span>
         </p>
+
+        <p style="margin-bottom:20px; font-weight:600;">
+            ✉️ Email: 
+            <a href="mailto:techinadvanceinfo@gmail.com" style="color:#00f2ea; text-decoration:none;">
+                techinadvanceinfo@gmail.com
+            </a>
+        </p>
+
+        <div class="quick-links">
+            <a class="quick-link" href="https://wa.me/12406013875" target="_blank" rel="noopener">
+                💬 WhatsApp Quick Chat
+            </a>
+
+            <a class="quick-link" href="mailto:techinadvanceinfo@gmail.com">
+                ✉️ Email Us
+            </a>
+        </div>
 
         <button onclick="toggleModal()" class="launch-btn">
             Start Your Project →
@@ -248,7 +322,7 @@ footer {
 
 </div>
 
-<!-- 🔥 LEAD CAPTURE MODAL -->
+<!-- LEAD CAPTURE MODAL -->
 <div class="modal-overlay" id="contactModal">
     <div class="modal-content">
 
@@ -259,10 +333,11 @@ footer {
         </p>
 
         <form id="lead-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Business Email" required>
-            <input type="text" placeholder="What are you building?">
-            <textarea rows="4" placeholder="Project details, timeline, or goals"></textarea>
+            <input type="text" name="customer_name" placeholder="Your Name" required>
+            <input type="email" name="customer_email" placeholder="Business Email" required>
+            <input type="tel" name="customer_phone" placeholder="Phone Number">
+            <input type="text" name="project_type" placeholder="What are you building?">
+            <textarea name="project_details" rows="4" placeholder="Project details, timeline, or goals"></textarea>
 
             <button type="submit" class="launch-btn" style="width:100%;">
                 Get Free Consultation
@@ -273,13 +348,38 @@ footer {
             We respond within 24 hours
         </p>
 
+        <p style="margin-top:10px; font-size:0.85rem; color:#8fa3ad;">
+            Prefer quick chat?
+            <a href="https://wa.me/12406013875" target="_blank" rel="noopener" style="color:#00f2ea; text-decoration:none;">
+                Message us on WhatsApp
+            </a>
+        </p>
+
         <div class="close-modal" onclick="toggleModal()">Cancel</div>
     </div>
 </div>
 
 <footer>
     &copy; 2026 TechInAdvance<br><br>
-    📞 Contact: <span class="phone">(240) 601-3875</span>
+
+    📞 Contact:
+    <a href="tel:+12406013875">
+        <span class="phone">(240) 601-3875</span>
+    </a>
+
+    <br><br>
+
+    💬 WhatsApp:
+    <a href="https://wa.me/12406013875" target="_blank" rel="noopener">
+        <span class="phone">240-601-3875</span>
+    </a>
+
+    <br><br>
+
+    ✉️ Email:
+    <a href="mailto:techinadvanceinfo@gmail.com">
+        <span class="email">techinadvanceinfo@gmail.com</span>
+    </a>
 </footer>
 
 <script>
@@ -293,8 +393,42 @@ function toggleModal() {
 
 document.getElementById("lead-form").addEventListener("submit", function(e) {
     e.preventDefault();
-    alert("✅ Request received. We'll contact you shortly.");
-    this.reset();
+
+    const form = e.target;
+
+    const customerName = form.customer_name.value.trim();
+    const customerEmail = form.customer_email.value.trim();
+    const customerPhone = form.customer_phone.value.trim();
+    const projectType = form.project_type.value.trim();
+    const projectDetails = form.project_details.value.trim();
+
+    if (!customerName || !customerEmail) {
+        alert("Please enter your name and business email.");
+        return;
+    }
+
+    const recipientEmail = "techinadvanceinfo@gmail.com";
+    const subject = encodeURIComponent("New TechInAdvance Project Request");
+
+    const body = encodeURIComponent(
+`New project request from TechInAdvance website:
+
+Name: ${customerName}
+Email: ${customerEmail}
+Phone: ${customerPhone || "Not provided"}
+Project Type: ${projectType || "Not provided"}
+
+Project Details:
+${projectDetails || "Not provided"}
+
+Preferred quick chat:
+WhatsApp: 240-601-3875`
+    );
+
+    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+
+    alert("✅ Your email app will open so you can send the request.");
+    form.reset();
     toggleModal();
 });
 </script>
